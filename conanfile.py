@@ -3,7 +3,7 @@ from conans import ConanFile, CMake, tools
 
 class HsmConan(ConanFile):
     name = "hsm"
-    version = "1.1"
+    version = "1.3.2"
     license = "MIT"
     author = "Erik Zenker erikzenker@hotmail.com"
     url = "https://github.com/erikzenker/hsm.git"
