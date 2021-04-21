@@ -3,7 +3,7 @@ from conans import ConanFile, CMake, tools
 
 class HsmConan(ConanFile):
     name = "hsm"
-    version = "1.3.2"
+    version = "1.4.5"
     license = "MIT"
     author = "Erik Zenker erikzenker@hotmail.com"
     url = "https://github.com/erikzenker/hsm.git"
@@ -14,16 +14,15 @@ class HsmConan(ConanFile):
     generators = "cmake"
 
     def source(self):
-        self.run("git clone https://github.com/erikzenker/hsm.git")
+        self.run("git clone https://github.com/erikzenker/hsm.git -b v" + self.version)
 
     def build(self):
         cmake = CMake(self)
-        cmake.configure(source_folder="hsm/src")
-        cmake.install()
+        cmake.configure(source_folder="hsm")
 
     def package(self):
-        self.copy("*.h", dst="include", src="hsm/src/include")
-        self.copy("*.cmake", dst="lib/cmake/hsm", src="hsm/src/")
+        cmake = CMake(self)    
+        cmake.install()
 
     def package_id(self):
         self.info.header_only()
